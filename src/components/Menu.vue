@@ -1,26 +1,38 @@
 <template>
-  <div>
-      <nav>
-        <ul id="menu">
-            <li><router-link to="/">Home</router-link></li>
-            <li><router-link to="/multiplicador">Multiplicador</router-link></li>
-            <li><router-link to="/deportes">Deportes</router-link></li>
-            <li><router-link to="/numeros">Numeros</router-link></li>
-            <li><router-link to="/comics">Comics</router-link></li>
-        </ul>
+  <div class="row">
+      <nav class="navbar navbar-expand navbar-dark bg-primary">
+        <router-link to="/" class="navbar-brand">Home</router-link>
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav mlauto pt-1">
+                <li class="nav-item">
+                    <router-link to="/multiplicador" class="nav-link">Multiplicador</router-link>                </li>
+                <li class="nav-item">
+                    <router-link to="/deportes" class="nav-link">Deportes</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/numeros" class="nav-link">Numeros</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/comics" class="nav-link">Comics</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/numerodoble/25" class="nav-link">Numero Doble</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/numerosaleatorios" class="nav-link">Numeros aleatorios</router-link>
+                </li>
+            </ul>
+        </div>
     </nav>
-    <hr/>
   </div>
 </template>
 
 <script>
 export default {
-    name: "Menu"
+    name: "Menu",
 }
 </script>
 
 <style>
-    #menu {
-        display: inline;
-    }
+    
 </style>

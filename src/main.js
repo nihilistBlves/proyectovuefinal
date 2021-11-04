@@ -6,6 +6,9 @@ import Home from './components/Multiplicador/Home.vue'
 import Deportes from './components/Deportes/Deportes.vue'
 import NumerosPadre from './components/Numeros/NumerosPadre.vue'
 import ComicPadre from './components/Comics/ComicPadre.vue'
+import NumeroDoble from './components/NumeroDoble/NumeroDoble.vue'
+import NumerosAleatorios from './components/PracticaRouting/NumerosAleatorios.vue'
+import NumeroTriple from './components/PracticaRouting/NumeroTriple.vue'
 
 Vue.config.productionTip = false
 
@@ -17,6 +20,9 @@ const routes = [
   {path: "/deportes", component: Deportes},
   {path: "/numeros", component: NumerosPadre},
   {path: "/comics", component: ComicPadre},
+  {path: "/numerodoble/:numero?", component: NumeroDoble},
+  {path: "/numerosaleatorios", component: NumerosAleatorios},
+  {path: "/numerotriple/:numero", component: NumeroTriple},
   {path: "/", component: Home},
 ];
 

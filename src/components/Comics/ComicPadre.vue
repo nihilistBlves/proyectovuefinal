@@ -1,24 +1,27 @@
 <template>
-    <div>
-        <h1>Ejemplo comics Objetos/colecciones</h1>
-        <label for="">Titulo</label>
-        <input type="text" v-model="titulo">
-        <br>
-        <label for="">Imagen</label>
-        <input type="text" v-model="imagen">
-        <br>
-        <label for="">Descripción</label>
-        <input type="text" v-model="descripcion">
-        <br>
-        <button @click="nuevoComic">Nuevo comic</button>
-        <div v-if="comicFavorito">
-            <h2>FAVORITO</h2>
-            <h3>{{comicFavorito.titulo}}</h3>
-            <p>{{comicFavorito.descripcion}}</p>
-            <img :src="comicFavorito.imagen" height="200px"/> <br>
-        </div>
-        <div v-for="(com, index) in comics" :key="index">
-            <ComicHijo :comic="com" :index="index" v-on:seleccionarFavorito="seleccionarFavorito" v-on:modificarComic="modificarComic" v-on:eliminarComic="eliminarComic"/>
+    <div class="row justify-content-center">
+        <div class="col-6 text-center">
+          <h1>Ejemplo comics Objetos/colecciones</h1>
+          <form v-on:submit.prevent="nuevoComic()">
+            <label for="" class="form-label">Titulo</label>
+            <input type="text" class="form-control" v-model="comicForm.titulo">
+            <label for="" class="form-label">Imagen</label>
+            <input type="text" class="form-control" v-model="comicForm.imagen">
+            <label for="" class="form-label">Descripción</label>
+            <input type="text" class="form-control" v-model="comicForm.descripcion">
+            <button class="btn btn-primary form-control mt-3">Nuevo comic</button>
+          </form>
+          <div v-if="comicFavorito" class="card m-3 bg-success">
+              <h2 class="text-white">FAVORITO</h2>
+              <div class="card">
+                <h3>{{comicFavorito.titulo}}</h3>
+                <p>{{comicFavorito.descripcion}}</p>
+                <img :src="comicFavorito.imagen" height="200px"/>
+              </div>
+          </div>
+          <div v-for="(com, index) in comics" :key="index">
+              <ComicHijo :comic="com" :index="index" v-on:seleccionarFavorito="seleccionarFavorito" v-on:modificarComic="modificarComic" v-on:eliminarComic="eliminarComic"/>
+          </div>
         </div>
     </div>
 </template>
@@ -33,9 +36,11 @@ export default {
     },
     data() {
         return {
-            titulo: "",
-            imagen: "",
-            descripcion: "",
+            comicForm: {
+              titulo: "",
+              imagen: "",
+              descripcion: ""
+            },
             comics: [
             {
               titulo: "Spiderman",
@@ -79,18 +84,16 @@ export default {
     },
     methods: {
         nuevoComic() {
-            var comic = {
-                titulo: this.titulo,
-                imagen: this.imagen,
-                descripcion: this.descripcion
-            }
-            this.comics.push(comic);
+            this.comics.push(this.comicForm);
         },
         seleccionarFavorito(objetoComic) {
             this.comicFavorito = objetoComic;
         },
-        modificarComic(objetoComic) {
-            this.comicFavorito = objetoComic;
+        modificarComic(objetoComic, index) {
+            objetoComic.titulo = this.comicForm.titulo;
+            objetoComic.imagen = this.comicForm.imagen;
+            objetoComic.descripcion = this.comicForm.descripcion;
+            this.comics[index] = objetoComic;
         },
         eliminarComic(index) {
             this.comics.splice(index, 1);

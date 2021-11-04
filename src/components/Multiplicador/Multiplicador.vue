@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="resultado in multiplicaciones" :key="resultado.resultado">
+        <tr v-for="resultado in multiplicaciones" :key="resultado.operacion">
           <td>
             {{resultado.operacion}}
           </td>

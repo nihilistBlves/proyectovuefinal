@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <h1>Componente App</h1>
+  <div class="container-fluid">
     <Menu/>
     <router-view></router-view>
   </div>
@@ -8,6 +7,10 @@
 
 <script>
 import Menu from './components/Menu.vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import "jquery"
+import "popper.js"
+import "bootstrap/dist/js/bootstrap.bundle"
 
 export default {
   name: 'App',
